@@ -3,7 +3,7 @@ name: Build Java project
 on:
   push:
     branches:
-      - "main"
+      - "never"
 
 jobs:
   build:

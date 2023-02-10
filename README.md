@@ -28,6 +28,8 @@
 
 ### ビルド
 
+事前に `.github/self-hosted-runner/Dockerfile` の 21 行目で、トークンを正しいものに書き換える。
+
 ```
 cd /path/to/github-actions-study/.github/self-hosted-runner
 
@@ -41,3 +43,7 @@ docker run --privileged=true selfhosted-runner
 ```
 
 docker コンテナーの中で docker を起動する関係で、 `--privileged=true` が必要。
+
+## Github Actions を用いて Java をビルドする
+
+セルフホストランナー用の docker コンテナーが起動した状態で、 `.github/workflows/build-java.yml` の 6 行目を正しいブランチ名に書き換えて push すればワークフローが起動する。
