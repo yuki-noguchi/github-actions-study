@@ -21,7 +21,7 @@ jobs:
         env:
           SKIP_LOGIN: true
 
-      - name: Build Gradle
+      - name: Build
         working-directory: ./dummy
         run: |
           ./gradlew build
