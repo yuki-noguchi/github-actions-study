@@ -1,6 +1,7 @@
 FROM ubuntu:latest
 
-RUN apt-get -y update && apt-get -y install curl
+RUN apt-get -y update \
+  && apt-get -y install curl supervisor
 
 # Dockerのインストール
 WORKDIR /tmp
@@ -15,5 +16,7 @@ RUN curl -o actions-runner-linux-x64-2.301.1.tar.gz -L https://github.com/action
   && ./bin/installdependencies.sh \
   && ./config.sh --url https://github.com/yuki-noguchi/github-actions-study --token AEWYBRMXPVU2GVLN3MAD4VDD4YH3A
 
-# Github Actions セルフホストランナー起動
-ENTRYPOINT [ "sh", "-c", "service docker start && ./run.sh" ]
+
+# 各種プロセス起動
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+CMD ["/usr/bin/supervisord"]

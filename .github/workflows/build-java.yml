@@ -16,6 +16,7 @@ jobs:
         with:
           distribution: "temurin"
           java-version: "17"
+
       - uses: actions-hub/docker/cli@master
         env:
           SKIP_LOGIN: true
