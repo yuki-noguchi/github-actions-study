@@ -16,4 +16,4 @@ RUN curl -o actions-runner-linux-x64-2.301.1.tar.gz -L https://github.com/action
   && ./config.sh --url https://github.com/yuki-noguchi/github-actions-study --token AEWYBRMXPVU2GVLN3MAD4VDD4YH3A
 
 # Github Actions セルフホストランナー起動
-ENTRYPOINT [ "./run.sh" ]
+ENTRYPOINT [ "sh", "-c", "service docker start && ./run.sh" ]
