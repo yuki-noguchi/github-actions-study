@@ -10,6 +10,12 @@ RUN curl -fsSL https://get.docker.com -o get-docker.sh \
   && sh get-docker.sh
 COPY ./docker.conf /etc/default/docker
 
+# kubectlのインストール
+# ref: https://kubernetes.io/ja/docs/tasks/tools/install-kubectl/
+RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" \
+  && chmod +x ./kubectl \
+  && mv ./kubectl /usr/local/bin/kubectl
+
 # Github Actionsの設定
 # ref: https://github.com/yuki-noguchi/github-actions-study/settings/actions/runners/new?arch=x64&os=linux
 ENV RUNNER_ALLOW_RUNASROOT 1
